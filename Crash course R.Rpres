@@ -1,0 +1,254 @@
+Crash course R
+========================================================
+author: Jeffrey Durieux, MSc
+date: 05-02-2019 / 12-02-2019
+autosize: true
+
+
+Introduction
+========================================================
+Who am I:
+<br>
+- PhD candidate methodology and statistics department
+- Project: dev. new data analysis tools for fMRI (in $\texttt{R}$)
+- former M&S master student and psychology bachelor student Leiden University
+- $\texttt{R}$-enthousiast: daily user of $\texttt{R}$
+
+Learning goals 
+========================================================
+
+The main learning goals: 
+
+<hr>
+
+- First introduction to $\texttt{R}$ and Rstudio
+- Data generation/simulation
+- Basic understanding of programming/control flows 
+
+Learning goals
+=================
+- Homework exercises from M&S mastercourse R (handout)
+- **Important: practice everyday (e.g., 20 min)**
+- $\texttt{R}$ has a notoriously steep learning curve
+  - quite confusing some times
+  - especially when you're used to different languages
+  
+email: j.durieux@fsw.leidenuniv.nl
+
+
+Short Demo R and Rstudio
+======
+
+
+Exercise 01 - 01: R as a calculator
+========
+
+```{r, echo=TRUE}
+1 + 10
+sqrt(16)
+?sqrt # questionmark + function to get help
+```
+- other help: www.google.com and google 'R: -question-'
+
+Exercise 01 - 02: define vectors
+========
+```{r, echo=TRUE}
+x <- c(0,7,1)
+y <- c(1,0,-1)
+```
+
+<br>
+Do exercises 01-02 - 01-04
+
+
+Built-in functions
+===================================
+R has many built-in functions. Some examples:
+
+```{r}
+x1 <- rep(1, times=20)
+x1
+mean(x1)
+length(x1)
+```
+
+Indexing
+============
+```{r}
+vec <- c(11,12,13,14,15)
+vec[1]
+vec[5]
+vec[2:4]
+
+```
+
+
+Simulating data 
+===========
+With R you can easily simulate data from a distribution
+
+```{r}
+y1 <- rnorm(n = 1000, mean = 0, sd = 1)
+hist(y1)
+```
+
+Replicating your data simulation
+============
+```{r}
+set.seed(1)
+x <- rnorm(n = 5)
+x
+```
+
+
+
+Homework
+============
+- All exercises of chapter 1
+- 02-01, 02-05 and 02-06
+- Extra: master assignment 1
+
+
+Week 2
+==============================
+
+Main learning goals:
+
+- Perform simple data analysis
+- programming skills
+  - user defined functions
+  - for loop
+  - conditionals (if ifelse)
+- Miscellaneous / useful stuff for a simulation study
+
+Simple data analysis
+==============================
+```{r}
+# 04-03 a
+data("mtcars")
+#View(mtcars)
+row.names(mtcars)
+```
+
+Simple data analysis
+==============================
+```{r}
+# 04-03 b
+aggregate(mtcars$hp~mtcars$am, FUN = mean)
+
+```
+
+Simple data analysis
+==============================
+```{r}
+# 04-03 b boxplot
+boxplot(mtcars$hp~mtcars$am)
+
+```
+
+Simple data analysis
+==============================
+```{r}
+# 04-03 c anova
+aov(mtcars$hp~mtcars$am)
+
+```
+
+Simple data analysis
+==============================
+```{r}
+# 04-03 c anova
+myanova <- aov(mtcars$hp~mtcars$am)
+summary(myanova)
+```
+
+
+<!-- Simple data analysis -->
+<!-- ============================== -->
+<!-- ```{r} -->
+<!-- ## 04-03 e anova -->
+<!-- myanova <- aov( mtcars$hp ~ mtcars$am * mtcars$qsec ) -->
+<!-- summary(myanova) -->
+<!-- ``` -->
+
+
+
+Programming skills: user defined functions
+==============================
+```{r}
+# user defined function skeleton
+myfun <- function(arg1, arg2){
+  # do something with input arguments
+  result <- arg1 + arg2 
+  return( result )
+}
+myfun(1,5)
+```
+
+Programming skills: for loop
+==============================
+```{r}
+# for loop skeleton
+for( i in 1:5){
+  cat("This is iteration " , i, "\n")
+}
+```
+
+Programming skills: if statement
+==============================
+```{r}
+x <- 20
+if(x == 20){
+  cat("This code is executed")
+}
+```
+
+Programming skills: if else statement
+==============================
+```{r}
+x <- "red"
+if(x == "red"){
+  cat("This code is only executed when value of x = 'red'")
+}else{
+  cat("This code is only executed when value of x = is different than 'red' ")
+}
+```
+
+
+
+Programming skills: pseudocode simulation study
+==============================
+```{r, eval=F}
+# for loop pseudocode
+
+MyResults <- numeric() # initialize a vector to be filled
+for( simulation in 1:1000){
+  set.seed(simulation) # or use a different seed
+  
+  # simulate data 
+  
+  # perform the analysis 
+  
+  # check performance 
+  
+  # store results in MyResults
+  MyResults[simulation] <- result
+}
+```
+
+Programming skills: Miscellaneous
+==============================
+
+- set.seed()
+- expand.grid()
+- setwd()
+- save()
+
+Master assignment 
+==============================
+Write a R-script that:
+- step1: simulates 100 samples from a standard normal distribution
+- step2: performs a one sample t-test on that sampled data
+- step3: store the computed p-value in an object
+
+do step 1 - step 3 10000 times and comment on your findings about the 10000 computed p-values
