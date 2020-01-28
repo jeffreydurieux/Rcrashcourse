@@ -1,7 +1,7 @@
 Crash course R
 ========================================================
 author: Jeffrey Durieux, MSc
-date: 05-02-2019 / 12-02-2019
+date: January 2020
 autosize: true
 
 
@@ -45,7 +45,7 @@ Exercise 01 - 01: R as a calculator
 
 ```{r, echo=TRUE}
 1 + 10
-sqrt(16)
+sqrt( 16 )
 ?sqrt # questionmark + function to get help
 ```
 - other help: www.google.com and google 'R: -question-'
@@ -53,8 +53,8 @@ sqrt(16)
 Exercise 01 - 02: define vectors
 ========
 ```{r, echo=TRUE}
-x <- c(0,7,1)
-y <- c(1,0,-1)
+x <- c(0, 7, 1)
+y <- c(1, 0, -1)
 ```
 
 <br>
@@ -66,16 +66,16 @@ Built-in functions
 R has many built-in functions. Some examples:
 
 ```{r}
-x1 <- rep(1, times=20)
+x1 <- rep(1, times = 20)
 x1
-mean(x1)
-length(x1)
+mean( x1 )
+length( x1 )
 ```
 
 Indexing
 ============
 ```{r}
-vec <- c(11,12,13,14,15)
+vec <- c(11, 12, 13, 14, 15)
 vec[1]
 vec[5]
 vec[2:4]
@@ -125,9 +125,10 @@ Simple data analysis
 ==============================
 ```{r}
 # 04-03 a
-data("mtcars")
-#View(mtcars)
-row.names(mtcars)
+data( "mtcars" )
+attach(mtcars)
+rownames(mtcars)
+colnames(mtcars)
 ```
 
 Simple data analysis
@@ -136,13 +137,14 @@ Simple data analysis
 # 04-03 b
 aggregate(mtcars$hp~mtcars$am, FUN = mean)
 
+
 ```
 
 Simple data analysis
 ==============================
 ```{r}
 # 04-03 b boxplot
-boxplot(mtcars$hp~mtcars$am)
+boxplot(hp~am)
 
 ```
 
@@ -150,7 +152,7 @@ Simple data analysis
 ==============================
 ```{r}
 # 04-03 c anova
-aov(mtcars$hp~mtcars$am)
+aov(hp~am)
 
 ```
 
@@ -158,7 +160,7 @@ Simple data analysis
 ==============================
 ```{r}
 # 04-03 c anova
-myanova <- aov(mtcars$hp~mtcars$am)
+myanova <- aov(hp~am)
 summary(myanova)
 ```
 
@@ -177,10 +179,10 @@ Programming skills: user defined functions
 ==============================
 ```{r}
 # user defined function skeleton
-myfun <- function(arg1, arg2){
+myfun <- function(arg1, arg2) {
   # do something with input arguments
-  result <- arg1 + arg2 
-  return( result )
+  result <- arg1 + arg2
+  return(result)
 }
 myfun(1,5)
 ```
