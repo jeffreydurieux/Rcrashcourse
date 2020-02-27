@@ -18,7 +18,8 @@ set.seed(123)
 setwd(dir = "/Users/jeffreydurieux/Documents/Rcrashcourse/")
 
 # source some user defined functions from a R script folder on your laptop
-source("my_functions.R")
+# not used for this script, just an example about the sourcing function
+# source("my_functions.R")
 
 
 ###### my simulation ######
