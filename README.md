@@ -1,12 +1,8 @@
 # Crash course R
 
-## Link to evaluation
-[Click here!](https://docs.google.com/forms/d/e/1FAIpQLSeqcsNQTjyzCeoY4do8GowD-yf9llhFWKaeLovGWc9nvz5UrQ/viewform?usp=sf_link)
-
-
 ## *The only way to learn R is by doing some exercises every day!*
 
-Two sessions: date and location TBD
+Three sessions: date and location TBD
 
 ### Description, difficulty level and Learning goals:
 Short explanation of basic R topics tailored to the needs of a bachelor project.
